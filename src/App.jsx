@@ -7,6 +7,7 @@ import './App.css'
 import ProjectCard from './ProjectCard'
 
 export default function App() {
+  const [count, setCount] = useState(0);
   return (
     <>
     <div className="board-row">
@@ -27,16 +28,18 @@ export default function App() {
       <button className='square'>9</button>
     </div>
     
-
-    <div>
-      <h1>Haruna's Website</h1>
-      <ProjectCard 
-      title="Hotel Website"
-      tech="HTML"/>
-      <ProjectCard 
-      title="ABC"
-      tech="dfasfadf"/>
+    <div style={{display: "flex", gap: "10px"}}>
+      <h1>Counter</h1>
+      <h2>{count}</h2>
+      <button onClick={() => setCount(count + 1)}>
+        +1
+      </button>
+      <button onClick={() => setCount(count - 1)}>-1</button>
+      <button onClick={() => setCount(0)}>reset
+      </button>
     </div>
+
+
   </>
   
   );
