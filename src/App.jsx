@@ -7,7 +7,7 @@ import './App.css'
 import ProjectCard from './ProjectCard'
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(100);
   return (
     <>
     <div className="board-row">
@@ -31,12 +31,14 @@ export default function App() {
     <div style={{display: "flex", gap: "10px"}}>
       <h1>Counter</h1>
       <h2>{count}</h2>
-      <button onClick={() => setCount(count + 1)}>
-        +1
+      
+      <button onClick={() => setCount(count + 10)}>
+        +10
       </button>
       <button onClick={() => setCount(count - 1)}>-1</button>
       <button onClick={() => setCount(0)}>reset
       </button>
+      {count >= 10 && <p>Amazing!</p>}
     </div>
 
 
