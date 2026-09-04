@@ -6,45 +6,37 @@ import './App.css'
 
 import ProjectCard from './ProjectCard'
 
+
+
 export default function App() {
-  const [count, setCount] = useState(100);
+  const projects = [
+    {
+      id: 1,
+      title: " Website",
+      tech: "WordPress",
+      completed: true
+    },
+    {
+      id: 2,
+      title: "Makaron website",
+      tech: "JavaScript",
+      completed: false
+    },
+    {
+      id: 3,
+      title: "Recruit website",
+      tech: "JavaScript",
+      completed: true
+    }
+  ];
   return (
-    <>
-    <div className="board-row">
-      <button className='square'>1</button>
-      <button className='square'>2</button>
-      <button className='square'>3</button>
+    <div>
+      <h1>Portfolio</h1>
+      {projects.map((project) => (
+        <ProjectCard title={project.title}
+        tech={project.tech}
+        completed={project.completed}/>
+      ))}
     </div>
-    
-    <div className="board-row">
-      <button className='square'>4</button>
-      <button className='square'>5</button>
-      <button className='square'>6</button>
-    </div>
-
-    <div className="board-row">
-      <button className='square'>7</button>
-      <button className='square'>8</button>
-      <button className='square'>9</button>
-    </div>
-    
-    <div style={{display: "flex", gap: "10px"}}>
-      <h1>Counter</h1>
-      <h2>{count}</h2>
-      
-      <button onClick={() => setCount(count + 10)}>
-        +10
-      </button>
-      <button onClick={() => setCount(count - 1)}>-1</button>
-      <button onClick={() => setCount(0)}>reset
-      </button>
-      {count >= 10 && <p>Amazing!</p>}
-    </div>
-
-
-  </>
-  
   );
-
-  
 }
