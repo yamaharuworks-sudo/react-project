@@ -33,6 +33,20 @@ export default function App() {
       projects.filter((project) => project.id !== id));
   };
 
+  const toggleCompleted = (id) => {
+    setProjects(
+      projects.map((project) => 
+        project.id === id
+          ? {
+            ...project,
+            completed: !project.completed
+          }
+          : project
+      )
+    );
+    
+  };
+
 
   const [filter, setFilter] = useState("all");
   const [title, setTitle] = useState("");
@@ -99,7 +113,8 @@ export default function App() {
             title={project.title}
             tech={project.tech}
             completed={project.completed}
-            deleteProject={deleteProject}/>
+            deleteProject={deleteProject}
+            toggleCompleted={toggleCompleted}/>
         ))}
       </div>
     </>
