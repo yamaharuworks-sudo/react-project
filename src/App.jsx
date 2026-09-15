@@ -7,7 +7,7 @@ import ProjectCard from './ProjectCard'
 
 export default function App() {
 
-  const projects = [
+  const [projects, setProjects] =useState([
     {
       id: 1,
       title: " Website",
@@ -26,11 +26,12 @@ export default function App() {
       tech: "JavaScript",
       completed: true
     }
-  ];
+  ]);
 
 
   const [filter, setFilter] = useState("all");
-
+  const [title, setTitle] = useState("");
+  const [tech, setTech] = useState("");
 
   const displayedProjects = 
     filter === "completed"
@@ -59,6 +60,32 @@ export default function App() {
       <button onClick={() => setFilter("not completed")}>Not Completed</button>
 
       <div>
+        <input 
+          type="text" 
+          placeholder='Project title'
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}/>
+        <input 
+          type="text" 
+          placeholder='tech '
+          value={tech}
+          onChange={(e) => setTech(e.target.value)}/>
+        <button onClick={() => {
+          setProjects([
+            ...projects,
+            {
+              id: projects.length + 1,
+              title,
+              tech,
+              completed: true
+            }])
+          setTitle("");
+          setTech("");
+        }}>
+        Add project</button>
+        
+
+
         <h1>Portfolio</h1>
         {displayedProjects.map((project) => (
           <ProjectCard 
