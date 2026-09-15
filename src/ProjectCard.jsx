@@ -1,4 +1,4 @@
-function ProjectCard ({id, title, tech, completed, deleteProject}) {
+function ProjectCard ({id, title, tech, completed, deleteProject, toggleCompleted}) {
     return (
         <div>
             <h3>{title}</h3>
@@ -11,6 +11,9 @@ function ProjectCard ({id, title, tech, completed, deleteProject}) {
             <button onClick={() => 
                 deleteProject(id)
             }>Delete</button>
+            <button onClick={() => 
+                toggleCompleted(id)
+            }> {completed ? "Mark as Not Completed" : "Mark as Completed"}</button>
 
         </div>
     );
