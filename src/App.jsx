@@ -28,6 +28,11 @@ export default function App() {
     }
   ]);
 
+  const deleteProject = (id) => {
+    setProjects(
+      projects.filter((project) => project.id !== id));
+  };
+
 
   const [filter, setFilter] = useState("all");
   const [title, setTitle] = useState("");
@@ -89,10 +94,12 @@ export default function App() {
         <h1>Portfolio</h1>
         {displayedProjects.map((project) => (
           <ProjectCard 
+            id={project.id}
             key={project.id}
             title={project.title}
             tech={project.tech}
-            completed={project.completed}/>
+            completed={project.completed}
+            deleteProject={deleteProject}/>
         ))}
       </div>
     </>
